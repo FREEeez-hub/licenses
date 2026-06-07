@@ -1,3 +1,13 @@
 {
-  "clients": []
+  "clients": [
+    {
+      "key": "FINDRBOT-PE7AHXZC",
+      "nom": "freez",
+      "actif": true,
+      "expire_le": "2026-07-07",
+      "channel_id": "1510737817372852336",
+      "achat_channel_id": "1512444019366432818",
+      "date_ajout": "2026-06-07"
+    }
+  ]
 }
