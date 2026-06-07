@@ -4,6 +4,7 @@
       "key": "FINDRBOT-PE7AHXZC",
       "nom": "freez",
       "actif": true,
+      "tier": 3,
       "expire_le": "2026-07-07",
       "channel_id": "1510737817372852336",
       "achat_channel_id": "1512444019366432818",
