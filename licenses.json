@@ -11,21 +11,21 @@
       "date_ajout": "2026-06-07",
       "recherches": [
         {
-          "nom": "Arc'teryx",
-          "mot_cle": "arcteryx",
-          "marque": "arcteryx",
+          "nom": "Nike ACG",
+          "mot_cle": "nike acg",
+          "marque": "nike",
           "prix_max": 0
         },
         {
-          "nom": "The North Face",
-          "mot_cle": "the north face",
-          "marque": "north face",
+          "nom": "Stussy",
+          "mot_cle": "stussy",
+          "marque": "stussy",
           "prix_max": 0
         },
         {
-          "nom": "Travis Scott",
-          "mot_cle": "travis scott",
-          "marque": "travis",
+          "nom": "Ralph Lauren",
+          "mot_cle": "ralph lauren",
+          "marque": "ralph lauren",
           "prix_max": 0
         }
       ]
