@@ -11,21 +11,21 @@
       "date_ajout": "2026-06-07",
       "recherches": [
         {
-          "nom": "Nike ACG",
-          "mot_cle": "nike acg",
-          "marque": "nike",
+          "nom": "Arc'teryx",
+          "mot_cle": "arcteryx",
+          "marque": "arcteryx",
+          "prix_max": 0
+        },
+        {
+          "nom": "Carhartt WIP",
+          "mot_cle": "carhartt wip",
+          "marque": "carhartt",
           "prix_max": 0
         },
         {
           "nom": "Stussy",
           "mot_cle": "stussy",
           "marque": "stussy",
-          "prix_max": 0
-        },
-        {
-          "nom": "Ralph Lauren",
-          "mot_cle": "ralph lauren",
-          "marque": "ralph lauren",
           "prix_max": 0
         }
       ]
