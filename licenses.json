@@ -29,6 +29,17 @@
           "prix_max": 0
         }
       ]
+    },
+    {
+      "key": "FINDRBOT-QOAHJR3G",
+      "nom": "test038490",
+      "actif": true,
+      "tier": 1,
+      "expire_le": "2026-07-09",
+      "channel_id": "1510737817372852336",
+      "achat_channel_id": "1512444019366432818",
+      "recherches": [],
+      "date_ajout": "2026-06-09"
     }
   ]
 }
