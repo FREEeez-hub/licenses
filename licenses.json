@@ -17,15 +17,15 @@
           "prix_max": 0
         },
         {
-          "nom": "Carhartt WIP",
-          "mot_cle": "carhartt wip",
-          "marque": "carhartt",
+          "nom": "Lacoste",
+          "mot_cle": "lacoste",
+          "marque": "lacoste",
           "prix_max": 0
         },
         {
-          "nom": "Stussy",
-          "mot_cle": "stussy",
-          "marque": "stussy",
+          "nom": "Ralph Lauren",
+          "mot_cle": "ralph lauren",
+          "marque": "ralph lauren",
           "prix_max": 0
         }
       ],
