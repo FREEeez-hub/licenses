@@ -39,7 +39,20 @@
       "expire_le": "2026-06-11",
       "channel_id": "1514029033958932530",
       "achat_channel_id": "",
-      "recherches": [],
+      "recherches": [
+        {
+          "nom": "Carhartt WIP",
+          "mot_cle": "carhartt wip",
+          "marque": "carhartt",
+          "prix_max": 0
+        },
+        {
+          "nom": "New Balance",
+          "mot_cle": "new balance",
+          "marque": "new balance",
+          "prix_max": 0
+        }
+      ],
       "date_ajout": "2026-06-10"
     }
   ]
