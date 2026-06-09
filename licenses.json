@@ -15,18 +15,6 @@
           "mot_cle": "arcteryx",
           "marque": "arcteryx",
           "prix_max": 0
-        },
-        {
-          "nom": "Lacoste",
-          "mot_cle": "lacoste",
-          "marque": "lacoste",
-          "prix_max": 0
-        },
-        {
-          "nom": "Ralph Lauren",
-          "mot_cle": "ralph lauren",
-          "marque": "ralph lauren",
-          "prix_max": 0
         }
       ],
       "discord_id": "1163095917679882290"
