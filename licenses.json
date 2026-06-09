@@ -29,6 +29,18 @@
       "achat_channel_id": "1512444019366432818",
       "recherches": [],
       "date_ajout": "2026-06-09"
+    },
+    {
+      "key": "FINDRBOT-O1LSH3YV",
+      "nom": "tesssst1999",
+      "discord_id": "1514023857688940738",
+      "actif": true,
+      "tier": 3,
+      "expire_le": "2026-06-11",
+      "channel_id": "",
+      "achat_channel_id": "",
+      "recherches": [],
+      "date_ajout": "2026-06-10"
     }
   ]
 }
