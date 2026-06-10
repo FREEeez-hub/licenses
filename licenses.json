@@ -49,5 +49,15 @@
       ],
       "date_ajout": "2026-06-10"
     }
-  ]
+  ],
+  "FINDRBOT-VI1VZ2DV": {
+    "tier": "T1",
+    "email": "jo.example@example.com",
+    "discord_id": null,
+    "channel_id": null,
+    "brands": [],
+    "min_discount": 5,
+    "active": false,
+    "created_at": "2026-06-10T21:09:19.280097"
+  }
 }
