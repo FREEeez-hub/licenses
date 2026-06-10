@@ -41,6 +41,12 @@
       "achat_channel_id": "1514383608905990256",
       "recherches": [
         {
+          "nom": "Ralph Lauren",
+          "mot_cle": "ralph lauren",
+          "marque": "ralph lauren",
+          "prix_max": 0
+        },
+        {
           "nom": "Arc'teryx",
           "mot_cle": "arcteryx",
           "marque": "arcteryx",
