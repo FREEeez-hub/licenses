@@ -41,15 +41,9 @@
       "achat_channel_id": "1514302444484690110",
       "recherches": [
         {
-          "nom": "New Balance",
-          "mot_cle": "new balance",
-          "marque": "new balance",
-          "prix_max": 0
-        },
-        {
-          "nom": "Carhartt WIP",
-          "mot_cle": "carhartt wip",
-          "marque": "carhartt",
+          "nom": "Arc'teryx",
+          "mot_cle": "arcteryx",
+          "marque": "arcteryx",
           "prix_max": 0
         }
       ],
