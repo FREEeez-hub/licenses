@@ -48,6 +48,19 @@
         }
       ],
       "date_ajout": "2026-06-10"
+    },
+    {
+      "key": "FINDRBOT-MD3JE3VN",
+      "nom": "",
+      "email": "jo.example@example.com",
+      "actif": false,
+      "tier": "T1",
+      "expire_le": null,
+      "channel_id": null,
+      "achat_channel_id": null,
+      "discord_id": null,
+      "recherches": [],
+      "date_ajout": "2026-06-10"
     }
   ],
   "FINDRBOT-VI1VZ2DV": {
