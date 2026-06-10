@@ -59,5 +59,15 @@
     "min_discount": 5,
     "active": false,
     "created_at": "2026-06-10T21:09:19.280097"
+  },
+  "FINDRBOT-U99DAK9Y": {
+    "tier": "T1",
+    "email": "jo.example@example.com",
+    "discord_id": null,
+    "channel_id": null,
+    "brands": [],
+    "min_discount": 5,
+    "active": false,
+    "created_at": "2026-06-10T21:09:55.290818"
   }
 }
