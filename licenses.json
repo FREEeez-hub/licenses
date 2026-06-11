@@ -11,9 +11,15 @@
       "date_ajout": "2026-06-07",
       "recherches": [
         {
-          "nom": "Arc'teryx",
-          "mot_cle": "arcteryx",
-          "marque": "arcteryx",
+          "nom": "Carhartt WIP",
+          "mot_cle": "carhartt wip",
+          "marque": "carhartt",
+          "prix_max": 0
+        },
+        {
+          "nom": "Ralph Lauren",
+          "mot_cle": "ralph lauren",
+          "marque": "ralph lauren",
           "prix_max": 0
         }
       ],
