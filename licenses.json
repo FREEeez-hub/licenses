@@ -11,15 +11,9 @@
       "date_ajout": "2026-06-07",
       "recherches": [
         {
-          "nom": "Carhartt WIP",
-          "mot_cle": "carhartt wip",
-          "marque": "carhartt",
-          "prix_max": 0
-        },
-        {
-          "nom": "Ralph Lauren",
-          "mot_cle": "ralph lauren",
-          "marque": "ralph lauren",
+          "nom": "Comme Des Garcons",
+          "mot_cle": "comme des garcons",
+          "marque": "comme des garcons",
           "prix_max": 0
         }
       ],
