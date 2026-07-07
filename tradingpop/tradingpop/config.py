@@ -26,6 +26,9 @@ DEFAUTS = {
     "outcome_horizons_hours": [1, 24],
     "history_limit": 8,
     "db_path": "tradingpop.db",
+    "swing_lookback": 3,
+    "capital_reference": 10000.0,
+    "risque_max_pct_par_trade": 1.0,
 }
 
 VARS_ENV_REQUISES = [
@@ -57,6 +60,9 @@ class Config:
     )
     history_limit: int = DEFAUTS["history_limit"]
     db_path: str = DEFAUTS["db_path"]
+    swing_lookback: int = DEFAUTS["swing_lookback"]
+    capital_reference: float = DEFAUTS["capital_reference"]
+    risque_max_pct_par_trade: float = DEFAUTS["risque_max_pct_par_trade"]
 
 
 def charger_dotenv(chemin: str | Path = ".env") -> None:

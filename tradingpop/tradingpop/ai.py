@@ -22,16 +22,29 @@ PROMPT_SYSTEME = """Tu es l'analyste de TradingPop, un assistant personnel d'obs
 des marchés. Tu produis des analyses informatives, jamais des conseils financiers \
 réglementés et jamais d'ordres à exécuter.
 
+Écris comme un trader expérimenté qui commente un graphique : nomme les mouvements, \
+les fluctuations et les figures avec un vocabulaire précis (structure de marché, \
+cassures, figures de bougies), pas juste "le prix a monté".
+
 À chaque analyse :
 1. DÉCRIS d'abord concrètement ce que tu observes dans les données (choc de prix, \
 cassure de range, divergence RSI/prix, croisement de moyennes, volatilité anormale...). \
 Ne saute jamais directement au verdict.
-2. Intègre l'actualité fournie si elle est pertinente. N'invente JAMAIS de fait \
+2. Une structure de marché (tendance, dernier plus haut/bas significatif, événement \
+BOS/CHoCH éventuel) et des figures de bougies sont fournies plus bas, déjà calculées \
+à partir des prix réels. Réfère-toi à ces éléments par leur nom exact s'ils sont \
+pertinents. N'invente JAMAIS de cassure ou de figure supplémentaire que celles \
+fournies — si aucun événement n'est indiqué, dis simplement que la structure ne \
+montre pas de cassure nette en ce moment.
+3. Intègre l'actualité fournie si elle est pertinente. N'invente JAMAIS de fait \
 d'actualité : si l'actualité fournie est vide ou hors sujet, dis-le et raisonne \
 uniquement sur les données.
-3. Tiens compte de tes suggestions passées sur cet instrument et de leur résultat \
+4. Tiens compte de tes suggestions passées sur cet instrument et de leur résultat \
 réel pour ajuster ton raisonnement (ex. "la dernière fois que ce schéma est apparu, \
 le prix a fait X").
+5. Ne calcule et ne mentionne JAMAIS de taille de position ou de montant à risquer : \
+ce calcul est fait séparément par l'application, à partir de paramètres que \
+l'utilisateur contrôle. Reste sur la description du marché.
 
 Réponds UNIQUEMENT avec un objet JSON (aucun texte autour) au format :
 {
@@ -87,6 +100,8 @@ def construire_prompt_analyse(
     symbole: str,
     bougies: list[dict],
     indicateurs: dict,
+    structure: dict | None,
+    patterns: list[dict] | None,
     actualites: str | None,
     historique: str | None,
 ) -> str:
@@ -100,6 +115,12 @@ def construire_prompt_analyse(
         "",
         "## Indicateurs techniques calculés sur la série complète",
         json.dumps(indicateurs, ensure_ascii=False),
+        "",
+        "## Structure de marché calculée (faits, pas une estimation de ta part)",
+        json.dumps(structure, ensure_ascii=False) if structure else "(structure non calculable, historique insuffisant)",
+        "",
+        "## Figures de bougies détectées sur les dernières bougies",
+        json.dumps(patterns, ensure_ascii=False) if patterns else "(aucune figure de bougie détectée)",
         "",
         "## Actualité récente (résumé de recherche web)",
         actualites.strip() if actualites else "(aucune actualité disponible pour ce cycle)",
@@ -115,6 +136,8 @@ def analyser(
     symbole: str,
     bougies: list[dict],
     indicateurs: dict,
+    structure: dict | None,
+    patterns: list[dict] | None,
     actualites: str | None,
     historique: str | None,
 ) -> dict:
@@ -126,7 +149,7 @@ def analyser(
             {
                 "role": "user",
                 "content": construire_prompt_analyse(
-                    symbole, bougies, indicateurs, actualites, historique
+                    symbole, bougies, indicateurs, structure, patterns, actualites, historique
                 ),
             },
         ],

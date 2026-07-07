@@ -17,6 +17,17 @@ avec le popup.
 - **Analyse IA libre** : l'IA reçoit bougies OHLC + indicateurs (SMA, EMA,
   RSI, MACD) et décrit ce qu'elle observe avant de suggérer. Sortie :
   situation + suggestion + confiance 0-100 + justification courte.
+- **Structure de marché et figures de bougies** : la tendance, les derniers
+  plus hauts/bas significatifs et les cassures (BOS, CHoCH) sont calculés en
+  code à partir des prix réels (`structure.py`), tout comme les figures de
+  bougies classiques — doji, marteau, étoile filante, avalements
+  (`patterns.py`). L'IA commente ces faits déjà établis plutôt que de les
+  deviner sur des chiffres bruts, ce qui évite qu'elle invente des cassures.
+- **Taille de position et risque** : calcul mathématique (pas une estimation
+  de l'IA) de la taille de position et de la perte en cas d'invalidation, à
+  partir du niveau de structure le plus proche et de deux paramètres que tu
+  contrôles dans `config.json` : `capital_reference` et
+  `risque_max_pct_par_trade` (`risk.py`).
 - **Actualité** : recherche web ciblée avant analyse via OpenRouter (modèle à
   suffixe `:online`), mise en cache pour limiter le coût (`news_every_n_cycles`).
 - **Mémoire** (pas de fine-tuning) : chaque suggestion est enregistrée en
@@ -76,6 +87,9 @@ est désactivé (il reste affiché à l'ouverture).
 | `outcome_horizons_hours` | `[1, 24]` | Horizons d'évaluation du prix réel après suggestion |
 | `history_limit` | `8` | Nombre de cas passés réinjectés dans le prompt |
 | `db_path` | `tradingpop.db` | Emplacement de la base SQLite |
+| `swing_lookback` | `3` | Nombre de bougies de chaque côté pour détecter un plus haut/bas significatif |
+| `capital_reference` | `10000.0` | Capital de référence pour le calcul de taille de position (à ajuster à ta situation) |
+| `risque_max_pct_par_trade` | `1.0` | % maximum du capital risqué par trade — modifiable à tout moment |
 
 ## Architecture
 
@@ -85,6 +99,9 @@ tradingpop/
   config.py      config.json + .env, valeurs par défaut
   market_data.py client Twelve Data (bougies, prix spot)
   indicators.py  SMA / EMA / RSI / MACD en Python pur
+  structure.py   swings, tendance, BOS/CHoCH — calculés à partir des prix réels
+  patterns.py    figures de bougies classiques (doji, marteau, avalements...)
+  risk.py        taille de position et perte en cas d'invalidation (calcul, pas l'IA)
   news.py        recherche web d'actualités via OpenRouter :online + cache
   ai.py          prompt d'analyse, appel OpenRouter, validation JSON
   memory.py      SQLite : suggestions, résultats T+1h/T+1j, méta (thread-safe)
@@ -93,10 +110,11 @@ tradingpop/
   app.py         popup Tkinter always-on-top (seul module qui importe tkinter)
 ```
 
-Flux d'un cycle : bougies Twelve Data → indicateurs → actualité (cache) →
-résumé de l'historique en mémoire → analyse IA → enregistrement SQLite +
-affichage. En début de cycle, les suggestions arrivées à échéance sont
-évaluées au prix spot courant.
+Flux d'un cycle : bougies Twelve Data → indicateurs + structure + figures de
+bougies → actualité (cache) → résumé de l'historique en mémoire → analyse IA
+(qui commente la structure/les figures déjà calculées, sans les inventer) →
+calcul de taille de position → enregistrement SQLite + affichage. En début de
+cycle, les suggestions arrivées à échéance sont évaluées au prix spot courant.
 
 ## Tests
 
@@ -104,8 +122,9 @@ affichage. En début de cycle, les suggestions arrivées à échéance sont
 python -m unittest discover -s tests
 ```
 
-26 tests, sans réseau ni tkinter (indicateurs, mémoire, récap, normalisation
-de la sortie IA, câblage du worker avec réseau mocké).
+42 tests, sans réseau ni tkinter (indicateurs, structure de marché, figures de
+bougies, calcul de risque, mémoire, récap, normalisation de la sortie IA,
+câblage du worker avec réseau mocké).
 
 ## Sécurité et cadre légal (phase 1)
 
@@ -113,6 +132,10 @@ de la sortie IA, câblage du worker avec réseau mocké).
   financiers » ; le récap email inclut le même avertissement.
 - Aucune exécution automatique : le popup suggère, l'utilisateur décide et
   exécute ailleurs (compte **démo** recommandé pendant le test).
+- La taille de position affichée est un **calcul mathématique** (capital ×
+  risque configuré ÷ distance au niveau d'invalidation), jamais une
+  estimation de l'IA — elle reste dépendante des paramètres que tu contrôles
+  dans `config.json`, pas une recommandation d'investissement.
 - Aucun secret en dur : tout passe par les variables d'environnement ;
   `.env`, `config.json` et `*.db` sont exclus du dépôt via `.gitignore`.
 - La phase 2 (produit public) exigera de re-creuser MiFID II / FSMA avant tout
