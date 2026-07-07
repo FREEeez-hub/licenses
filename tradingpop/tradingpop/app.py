@@ -68,16 +68,33 @@ class LignesInstrument:
         )
         self.lbl_suggestion.pack(fill="x")
 
+        self.lbl_structure = tk.Label(
+            self.cadre, text="", bg=FOND_LIGNE, fg=TEXTE_SECONDAIRE,
+            font=("Segoe UI", 8), anchor="w", wraplength=300, justify="left",
+        )
+        self.lbl_structure.pack(fill="x")
+
+        self.lbl_risque = tk.Label(
+            self.cadre, text="", bg=FOND_LIGNE, fg=TEXTE_SECONDAIRE,
+            font=("Segoe UI", 8), anchor="w", wraplength=300, justify="left",
+        )
+        self.lbl_risque.pack(fill="x")
+
         self.lbl_meta = tk.Label(
             self.cadre, text="", bg=FOND_LIGNE, fg=TEXTE_SECONDAIRE,
             font=("Segoe UI", 8), anchor="w",
         )
         self.lbl_meta.pack(fill="x")
 
-        for widget in (self.cadre, self.lbl_action, self.lbl_suggestion, self.lbl_meta):
+        for widget in (
+            self.cadre, self.lbl_action, self.lbl_suggestion,
+            self.lbl_structure, self.lbl_risque, self.lbl_meta,
+        ):
             widget.bind("<Button-1>", self._afficher_details)
 
-    def mettre_a_jour(self, prix: float, analyse: dict) -> None:
+    def mettre_a_jour(
+        self, prix: float, analyse: dict, structure: dict | None, risque: dict | None
+    ) -> None:
         couleur = COULEURS_ACTION.get(analyse["action"], TEXTE_SECONDAIRE)
         libelle = LIBELLES_ACTION.get(analyse["action"], analyse["action"])
         self.lbl_prix.config(text=f"{prix:g}")
@@ -85,11 +102,30 @@ class LignesInstrument:
             text=f"{libelle} — confiance {analyse['confiance']}/100", fg=couleur
         )
         self.lbl_suggestion.config(text=analyse["suggestion"])
+
+        if structure:
+            evenement = structure.get("evenement") or "pas de cassure nette"
+            texte_structure = f"Structure : {structure['tendance']} — {evenement}"
+        else:
+            texte_structure = "Structure : indéterminée (historique insuffisant)"
+        self.lbl_structure.config(text=texte_structure)
+
+        if risque:
+            texte_risque = (
+                f"Taille sugg. : {risque['taille_position']:.2f} u. "
+                f"(stop {risque['niveau_invalidation']:g}, "
+                f"risque {risque['risque_montant']:.2f})"
+            )
+        else:
+            texte_risque = "Taille de position : pas de niveau de stop fiable pour l'instant"
+        self.lbl_risque.config(text=texte_risque)
+
         self.lbl_meta.config(text=datetime.now().strftime("analysé à %H:%M:%S"))
         self.details = (
             f"{self.symbole} — {libelle} (confiance {analyse['confiance']}/100)\n\n"
             f"Situation observée :\n{analyse['situation']}\n\n"
-            f"Justification :\n{analyse['justification']}\n\n{AVERTISSEMENT}"
+            f"Justification :\n{analyse['justification']}\n\n"
+            f"{texte_structure}\n{texte_risque}\n\n{AVERTISSEMENT}"
         )
 
     def afficher_erreur(self, texte: str) -> None:
@@ -139,7 +175,7 @@ class PopupTradingPop:
         self.racine.title("TradingPop")
         self.racine.configure(bg=FOND)
         self.racine.attributes("-topmost", True)
-        self.racine.geometry("340x460+40+40")
+        self.racine.geometry("340x560+40+40")
         self.racine.protocol("WM_DELETE_WINDOW", self.quitter)
 
         tk.Label(
@@ -193,7 +229,12 @@ class PopupTradingPop:
         elif genre == "analyse":
             ligne = self.lignes.get(message["symbole"])
             if ligne:
-                ligne.mettre_a_jour(message["prix"], message["analyse"])
+                ligne.mettre_a_jour(
+                    message["prix"],
+                    message["analyse"],
+                    message.get("structure"),
+                    message.get("risque"),
+                )
                 if (
                     message["analyse"]["confiance"]
                     >= self.config.alert_confidence_threshold

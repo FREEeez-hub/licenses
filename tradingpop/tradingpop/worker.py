@@ -12,7 +12,7 @@ import threading
 import time
 import traceback
 
-from . import ai, market_data, news
+from . import ai, market_data, news, patterns, risk, structure
 from .config import Config
 from .memory import Memoire
 
@@ -62,6 +62,10 @@ class Worker(threading.Thread):
             from .indicators import calculer_indicateurs
 
             indicateurs = calculer_indicateurs(clotures)
+            structure_marche = structure.detecter_structure(
+                bougies, self.config.swing_lookback
+            )
+            patterns_bougies = patterns.detecter_patterns_bougies(bougies)
 
             actualites = None
             if self._cycle % max(1, self.config.news_every_n_cycles) == 0:
@@ -75,10 +79,26 @@ class Worker(threading.Thread):
                 symbole, self.config.history_limit
             )
             analyse = ai.analyser(
-                self.config.model, symbole, bougies, indicateurs, actualites, historique
+                self.config.model,
+                symbole,
+                bougies,
+                indicateurs,
+                structure_marche,
+                patterns_bougies,
+                actualites,
+                historique,
+            )
+            risque = risk.calculer_position(
+                clotures[-1],
+                structure_marche["niveau_invalidation"],
+                self.config.capital_reference,
+                self.config.risque_max_pct_par_trade,
             )
             contexte = {
                 "indicateurs": indicateurs,
+                "structure": structure_marche,
+                "patterns": patterns_bougies,
+                "risque": risque,
                 "actualites": (actualites or "")[:500],
             }
             self.memoire.enregistrer_suggestion(
@@ -94,6 +114,8 @@ class Worker(threading.Thread):
                     "symbole": symbole,
                     "prix": clotures[-1],
                     "analyse": analyse,
+                    "structure": structure_marche,
+                    "risque": risque,
                 }
             )
         except Exception as exc:  # noqa: BLE001 — un instrument en échec ne stoppe pas la boucle

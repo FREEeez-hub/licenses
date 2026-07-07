@@ -50,8 +50,10 @@ class TestWorker(unittest.TestCase):
         # L'actualité et l'historique (None au premier cycle) sont transmis à l'IA.
         _, args, _ = analyser.mock_calls[0]
         self.assertEqual(args[1], "EUR/USD")
-        self.assertEqual(args[4], "BCE : statu quo.")
-        self.assertIsNone(args[5])
+        self.assertIsNotNone(args[4])  # structure calculée
+        self.assertIsInstance(args[5], list)  # figures de bougies détectées
+        self.assertEqual(args[6], "BCE : statu quo.")
+        self.assertIsNone(args[7])
 
         # La suggestion est en mémoire avec ses échéances d'évaluation.
         self.assertEqual(len(self.memoire.suggestions_du_jour(datetime.now().strftime("%Y-%m-%d"))), 1)

@@ -11,5 +11,8 @@
   "news_model": "anthropic/claude-haiku-4.5:online",
   "outcome_horizons_hours": [1, 24],
   "history_limit": 8,
-  "db_path": "tradingpop.db"
+  "db_path": "tradingpop.db",
+  "swing_lookback": 3,
+  "capital_reference": 10000.0,
+  "risque_max_pct_par_trade": 1.0
 }
