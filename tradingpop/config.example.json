@@ -1,0 +1,15 @@
+{
+  "watchlist": ["EUR/USD", "AAPL"],
+  "refresh_minutes": 5,
+  "candle_interval": "5min",
+  "candle_count": 120,
+  "news_every_n_cycles": 3,
+  "recap_hour": 8,
+  "alert_confidence_threshold": 75,
+  "alert_sound": true,
+  "model": "anthropic/claude-sonnet-5",
+  "news_model": "anthropic/claude-haiku-4.5:online",
+  "outcome_horizons_hours": [1, 24],
+  "history_limit": 8,
+  "db_path": "tradingpop.db"
+}

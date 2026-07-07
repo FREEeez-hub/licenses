@@ -1,0 +1,10 @@
+# Secrets et données locales — ne jamais versionner
+.env
+config.json
+*.db
+*.db-journal
+
+# Python
+__pycache__/
+*.pyc
+.venv/
