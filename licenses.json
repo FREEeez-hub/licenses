@@ -15,6 +15,54 @@
           "mot_cle": "comme des garcons",
           "marque": "comme des garcons",
           "prix_max": 0
+        },
+        {
+          "nom": "Logitech G29",
+          "mot_cle": "logitech g29",
+          "marque": "logitech g29",
+          "prix_max": 0
+        },
+        {
+          "nom": "Logitech G923",
+          "mot_cle": "logitech g923",
+          "marque": "logitech g923",
+          "prix_max": 0
+        },
+        {
+          "nom": "Thrustmaster T300",
+          "mot_cle": "thrustmaster t300",
+          "marque": "thrustmaster",
+          "prix_max": 0
+        },
+        {
+          "nom": "Fanatec",
+          "mot_cle": "fanatec",
+          "marque": "fanatec",
+          "prix_max": 0
+        },
+        {
+          "nom": "Volant sim racing",
+          "mot_cle": "volant sim racing",
+          "marque": "sim racing",
+          "prix_max": 0
+        },
+        {
+          "nom": "RAM DDR5",
+          "mot_cle": "ram ddr5",
+          "marque": "ddr5",
+          "prix_max": 0
+        },
+        {
+          "nom": "Ryzen AM5",
+          "mot_cle": "ryzen am5",
+          "marque": "amd am5",
+          "prix_max": 0
+        },
+        {
+          "nom": "Carte mere AM5",
+          "mot_cle": "carte mere am5",
+          "marque": "am5",
+          "prix_max": 0
         }
       ],
       "discord_id": "1163095917679882290"
