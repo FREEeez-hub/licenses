@@ -11,60 +11,6 @@
       "date_ajout": "2026-06-07",
       "recherches": [
         {
-          "nom": "Comme Des Garcons",
-          "mot_cle": "comme des garcons",
-          "marque": "comme des garcons",
-          "prix_max": 0
-        },
-        {
-          "nom": "Fanatec",
-          "mot_cle": "fanatec",
-          "marque": "fanatec",
-          "prix_max": 0
-        },
-        {
-          "nom": "Moza Racing",
-          "mot_cle": "moza racing",
-          "marque": "moza",
-          "prix_max": 0
-        },
-        {
-          "nom": "Simagic",
-          "mot_cle": "simagic",
-          "marque": "simagic",
-          "prix_max": 0
-        },
-        {
-          "nom": "Simucube",
-          "mot_cle": "simucube",
-          "marque": "simucube",
-          "prix_max": 0
-        },
-        {
-          "nom": "Heusinkveld",
-          "mot_cle": "heusinkveld",
-          "marque": "heusinkveld",
-          "prix_max": 0
-        },
-        {
-          "nom": "Thrustmaster T-GT",
-          "mot_cle": "thrustmaster tgt",
-          "marque": "thrustmaster",
-          "prix_max": 0
-        },
-        {
-          "nom": "Thrustmaster T818",
-          "mot_cle": "thrustmaster t818",
-          "marque": "thrustmaster",
-          "prix_max": 0
-        },
-        {
-          "nom": "RAM DDR5",
-          "mot_cle": "ram ddr5",
-          "marque": "ddr5",
-          "prix_max": 0
-        },
-        {
           "nom": "Ryzen AM5",
           "mot_cle": "ryzen am5",
           "marque": "amd am5",
@@ -74,6 +20,12 @@
           "nom": "Carte mere AM5",
           "mot_cle": "carte mere am5",
           "marque": "am5",
+          "prix_max": 0
+        },
+        {
+          "nom": "RAM DDR5",
+          "mot_cle": "ram ddr5",
+          "marque": "ddr5",
           "prix_max": 0
         }
       ],
