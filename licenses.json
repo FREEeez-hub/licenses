@@ -17,33 +17,45 @@
           "prix_max": 0
         },
         {
-          "nom": "Logitech G29",
-          "mot_cle": "logitech g29",
-          "marque": "logitech g29",
-          "prix_max": 0
-        },
-        {
-          "nom": "Logitech G923",
-          "mot_cle": "logitech g923",
-          "marque": "logitech g923",
-          "prix_max": 0
-        },
-        {
-          "nom": "Thrustmaster T300",
-          "mot_cle": "thrustmaster t300",
-          "marque": "thrustmaster",
-          "prix_max": 0
-        },
-        {
           "nom": "Fanatec",
           "mot_cle": "fanatec",
           "marque": "fanatec",
           "prix_max": 0
         },
         {
-          "nom": "Volant sim racing",
-          "mot_cle": "volant sim racing",
-          "marque": "sim racing",
+          "nom": "Moza Racing",
+          "mot_cle": "moza racing",
+          "marque": "moza",
+          "prix_max": 0
+        },
+        {
+          "nom": "Simagic",
+          "mot_cle": "simagic",
+          "marque": "simagic",
+          "prix_max": 0
+        },
+        {
+          "nom": "Simucube",
+          "mot_cle": "simucube",
+          "marque": "simucube",
+          "prix_max": 0
+        },
+        {
+          "nom": "Heusinkveld",
+          "mot_cle": "heusinkveld",
+          "marque": "heusinkveld",
+          "prix_max": 0
+        },
+        {
+          "nom": "Thrustmaster T-GT",
+          "mot_cle": "thrustmaster tgt",
+          "marque": "thrustmaster",
+          "prix_max": 0
+        },
+        {
+          "nom": "Thrustmaster T818",
+          "mot_cle": "thrustmaster t818",
+          "marque": "thrustmaster",
           "prix_max": 0
         },
         {
