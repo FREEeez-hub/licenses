@@ -11,15 +11,21 @@
       "date_ajout": "2026-06-07",
       "recherches": [
         {
-          "nom": "Stussy",
-          "mot_cle": "stussy",
-          "marque": "stussy",
+          "nom": "RAM DDR5",
+          "mot_cle": "ram ddr5",
+          "marque": "ddr5",
           "prix_max": 0
         },
         {
-          "nom": "Carhartt WIP",
-          "mot_cle": "carhartt wip",
-          "marque": "carhartt",
+          "nom": "Carte mere AM5",
+          "mot_cle": "carte mere am5",
+          "marque": "am5",
+          "prix_max": 0
+        },
+        {
+          "nom": "Ryzen AM5",
+          "mot_cle": "ryzen am5",
+          "marque": "amd am5",
           "prix_max": 0
         }
       ],
